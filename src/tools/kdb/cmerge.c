@@ -118,7 +118,8 @@ int execCmerge (KeySet * options, Key * errorKey)
 	if (ourpath == NULL) return 1;
 
 	const char * theirpath = getKeyNameFromOptions (options, GET_OPTION (options, "theirpath"), errorKey, verbose);
-	if (theirpath == NULL) {
+	if (theirpath == NULL)
+	{
 		elektraFree ((void *) ourpath);
 		return 1;
 	}
@@ -192,7 +193,7 @@ int execCmerge (KeySet * options, Key * errorKey)
 	Key * mergeInfo = keyNew ("/", KEY_END);
 	KeySet * mergeResult = elektraMerge (ours, oursRoot, theirs, theirsRoot, base, baseRoot, resultRoot, strategy, mergeInfo);
 
-	int nrConflicts = elektraMergeGetConflicts(mergeInfo);
+	int nrConflicts = elektraMergeGetConflicts (mergeInfo);
 	keyDel (mergeInfo);
 	if (mergeResult == NULL)
 	{
